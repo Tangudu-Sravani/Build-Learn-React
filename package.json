@@ -1,0 +1,25 @@
+{
+  "name": "react-build-project",
+  "version": "1.0.0",
+  "description": "React app",
+  "scripts": {
+    "test": "Jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tangudu-Sravani/Build-Learn-React.git"
+  },
+  "author": "sravani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tangudu-Sravani/Build-Learn-React/issues"
+  },
+  "homepage": "https://github.com/Tangudu-Sravani/Build-Learn-React#readme",
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  }
+}
