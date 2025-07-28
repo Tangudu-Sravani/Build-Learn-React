@@ -1,38 +1,48 @@
+/* 
 
-/* createRoot lets you create a root to display React components inside a browser DOM node.
- A DOM element. React will create a root for this DOM element and allow you to call functions on the root, such as render to display rendered React content. */
- // [browser DOM node defined in your HTML.]
-const reactRoot = ReactDOM.createRoot(document.getElementById("root"));
-
-//  the syntax of creating a react element [simple example]
-// const heading = React.createElement(  "h1",  {id:"heading" },  "Hello this is been printed by react"); 
-// reactRoot.render(heading);
-
-/*
-- want to generate this structure using react
 <div id="parent">
-    <div id="child">
-        <h1>Im a heading</h1>
-    </div>
+  <div id=child>
+    <h1>I'm h1 Tag</h1>
+    <h2>I'm h2 Tag</h2>
+  </div>
+  <div id=child2>
+    <h1>I'm h1 Tag</h1>
+    <h2>I'm h2 Tag</h2>
+  </div>
 </div>
+
+ReactElement(Object) => HTML(Browser Understands)
+
 */
 
-// code for recreting the above structure using react
+const parent = React.createElement('div', { id: 'parent' }, [
+  React.createElement('div', { id: 'child' }, [
+    React.createElement('h1', {}, "I'm h1 Tag"),
+    React.createElement('h2', {}, "I'm h2 Tag"),
+  ]),
+  React.createElement('div', { id: 'child2' }, [
+    React.createElement('h1', {}, "I'm h1 Tag"),
+    React.createElement('h2', {}, "I'm h2 Tag"),
+  ]),
+]);
 
-// can be Noticed compared to  JS and HTMl its a bit long in React
+// JSX
 
-const parent = React.createElement(
-  "div",
-  { id: "parent" },
- [ React.createElement(
-    "div",
-    { id: "child" },
-    [React.createElement("h1", {}, "This is the heading finally"),React.createElement("h1", {}, " im child 2 ")]
-  ),  React.createElement(
-    "div",
-    { id: "child" },
-    [React.createElement("h1", {}, "This is the heading finally"),React.createElement("h1", {}, " im child 2 ")]
-  )]
-);
+console.log(parent);
 
-reactRoot.render(parent)      
+// const heading = React.createElement(
+//   'h1',
+//   { id: 'heading', className: 'head' },
+//   'Hello World from React!'
+// ); // It's the job of Core React to create an element i.e, heading in this case
+
+// React Element is normal JavaScript Object{}
+
+// console.log(heading); // object
+
+const root = ReactDOM.createRoot(document.getElementById('root')); // It's the job of ReactDOM to create root i.e, heading in this case, bcz root is a dom element which is rendered to be on browser. This root is the place where all React code will run.
+
+// root.render(heading);
+root.render(parent);
+
+// In React, Render is the technique that can redirect a page with the help of function render(). Most importantly, render a function we can use to define the HTML code within the HTML element. It helps to display certain views in the UI using certain logic defined in the render function and returns the output.
