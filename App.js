@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom/client"
 const reactRoot = ReactDOM.createRoot(document.getElementById("root"));
 
-// creating a react div element  [JSX] - file name .js is valid one for it
+// creating a  div element using react - file name .js is valid one for it
 const parent = React.createElement(
   "div",
   { id: "parent" },
