@@ -49,4 +49,16 @@ ReactDOM.createRoot
  - Local Server
  - File Watching algorithm etc...
  
-
+planning of project
+* Header
+*  -Logo
+*  -Nav Items
+* Body
+*  - SearchBar
+*  - Restaurant Container
+*   -Restaurant Card
+* Footer
+* -Copyright
+* -Links
+* -Address
+* -Contact
