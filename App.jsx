@@ -1,22 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import logo from "./logo.png";
-/*
- * Header
- *  -Logo
- *  -Nav Items
- * Body
- *  - SearchBar
- *  - Restaurant Container
- *   -Restaurant Card
- *      -img
- *      - Name of restraurant,rating,cusines,delivary time
- * Footer
- * -Copyright
- * -Links
- * -Address
- * -Contact
- */
+
 const Header = () => {
   return (
     <div className="header">
@@ -41,17 +26,21 @@ const Header = () => {
 };
 // inline css usecase in react , by object form
 const styleCard = {
-  backgroundColor: "yellow",
+  backgroundColor: "#f0f0f0",
 };
 const RestaurantCard = () => {
   return (
-    <div className="res-container" style={styleCard}>
+    <div className="res-card" style={styleCard}>
       <img
         className="res-logo"
         src="https://c.ndtvimg.com/2019-10/7g6mck6g_biryani-badshah_625x300_25_October_19.jpg"
       />
       <div className="res-details">
         <h3>Meghana Foods</h3>
+        <h4>Biryani, North Indian , Asian </h4>
+        <h4>⭐4.3 star</h4>
+        <h4>⌚20 minutes</h4>
+
       </div>
     </div>
   );
@@ -62,6 +51,13 @@ const Body = () => {
       <div className="search">Search</div>
       <div className="restaurant-container">
         <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+
       </div>
     </div>
   );

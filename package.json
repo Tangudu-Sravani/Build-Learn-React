@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "React app",
   "scripts": {
+    "dev": "vite",
     "start": "parcel index.html",
     "build": "parcel build",
     "test": "Jest"
@@ -20,7 +21,8 @@
   "dependencies": {
     "babel": "^6.23.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "vite": "^6.3.5"
   },
   "devDependencies": {
     "parcel": "^2.15.4"
