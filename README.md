@@ -62,3 +62,14 @@ planning of project
 * -Links
 * -Address
 * -Contact
+
+
+Two Types of Export/Import
+
+Default Export/Import
+import Component from 'path'
+
+- Named Export/Import
+
+export const Component;
+import {Component} from 'path'
