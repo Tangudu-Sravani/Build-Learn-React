@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-const Header = () => {
+export const Header = () => {
   return (
     <div className="header">
       <div className="logo-container">
@@ -22,4 +22,3 @@ const Header = () => {
     </div>
   );
 };
-export default Header;

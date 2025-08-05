@@ -7,11 +7,11 @@
   display: flex;
   justify-content: space-between;
   font-size: 20px;
-  border : 2px solid black;
+  border: 2px solid black;
 }
-.header .logo-container > img{
-    margin:0 12px;
-    padding:2px;
+.header .logo-container > img {
+  margin: 0 12px;
+  padding: 2px;
 }
 .nav-items {
   padding: 0 20px;
@@ -27,22 +27,20 @@
   list-style: none;
   cursor: pointer;
 }
-.body{
-    margin:2px;
+.body {
+  margin: 2px;
 }
 .search {
-  padding:10px;
-   
+  padding: 10px;
 }
-.res-card:hover{
+.res-card:hover {
   border: 2px solid black;
-
-} 
+}
 .res-card {
-  padding:8px;
+  padding: 8px;
   margin: 8px;
   width: 180px;
-  height: 240px;
+  height: 280px;
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
@@ -59,20 +57,17 @@
 }
 
 .res-details {
-  margin:2px;
+  margin: 2px;
   box-sizing: border-box;
-  align-text:left;
-  justify-content:center;
-
+  align-text: left;
+  justify-content: center;
 }
-.res-details > h4{
- font-size:12px;
-
+.res-details > h4 {
+  font-size: 12px;
 }
 
-.restaurant-container{
-  display:flex;
-  justify-content:left;
+.restaurant-container {
+  display: flex;
+  justify-content: left;
   flex-wrap: wrap;
-
 }
