@@ -16,7 +16,7 @@ fetchData();
 },[]);
 
 const fetchData = async() => {
-const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.624480699999999&page_type=DESKTOP_WEB_LISTING"); // this fetch method is of JS Enginee of browser, not of React
+const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.624480699999999&page_type=DESKTOP_WEB_LISTING"); 
  const fetchJSON = await data.json();
 
     setListOfRestaurants(
@@ -27,14 +27,8 @@ const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12
       fetchJSON?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
-
 }
 
-  // conditional retering - rendering according to condition
-
-  // if(listOfRestaurants.length <= 0 ) {
-  //   return <Shimmer/>
-  //   }
 
   return listOfRestaurants.length <= 0 ?  <Shimmer/> : (    <div className="body">
       <div className="search">

@@ -73,3 +73,15 @@ import Component from 'path'
 
 export const Component;
 import {Component} from 'path'
+
+useEffect
+    - If no dependency array => useEffect is called on every render
+    - If dependecy array is empty = [] => useEffect is called on intial render(just once)
+    - If dependency array is [btnNameReact] => called btnNameReact is updated
+
+Routing
+    CreateBrowserRouter :- It lets you define a list of routes (paths) and what components should render for them 
+
+    RouterProvider is a compoenent, which is exported by react-router-dom library , providing appRouter configuration to it
+
+   
