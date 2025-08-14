@@ -44,13 +44,13 @@ const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12
         <button className="filter-btn" onClick={()=>{
           // Filter the restro cards and updtes the UI
           //searchText
-          let filteredList = listOfRestaurants.filter((res)=>res.data.avgRating>4);
-          setListOfRestaurants(filteredList);
+          let filteredList = listOfRestaurants.filter((res)=>res.info.avgRating>4.5);
+          setfilterSearchlist(filteredList);
            {console.log("listOfRestaurants", listOfRestaurants)}
         }}>Top Rated restaurant</button>
        
       </div>
-      <div className="restaurant-container">
+       <div className="restaurant-container">
         {filterSearchlist.map((restaurant) => (
           <RestaurantCard  key={restaurant?.info?.id || restaurant?.data?.id} resData={restaurant} />
         ))}
