@@ -6,7 +6,7 @@ import RestaurantCard from './components/RestaurantCard.jsx';
 import About from './components/About';
 import Error from './components/Error';
 import Contact from './components/Contact'
-import {createBrowserRouter,RouterProvider} from 'react-router-dom';
+import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 
 ("use strict");
 
@@ -14,42 +14,32 @@ const AppLayout = () => {
   return (
     <div className="app">
       <Header />
-      <Body />
+      <Outlet />
     </div>
   );
 };
 const reactRoot = ReactDOM.createRoot(document.getElementById("root"));
-/**
- *  calling createBrowserRouter with an array of route objects.
 
-    Each object maps:
-
-    path → URL segment
-
-    element → React element (component) that will render when the URL matches.
-
-    So:
-
-    / → <AppLayout />
-
-    /about → <About />
- */
 const appRouter = createBrowserRouter([
   {
-    path:"/",
+    path: "/",
     element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      }
+    ],
     errorElement: <Error />,
   },
-  {
-    path:"/about",
-    element:<About/>,
-    errorElement: <Error />,
-  },
-  {
-    path:"/contact",
-    element:<Contact/>,
-    errorElement: <Error />,
-  }
-])
+]);
 
 reactRoot.render(<RouterProvider router ={appRouter}/>);
