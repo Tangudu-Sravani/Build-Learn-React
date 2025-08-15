@@ -4,6 +4,8 @@ import {Header} from './components/Header.jsx';
 import Body from './components/Body.jsx';
 import RestaurantCard from './components/RestaurantCard.jsx';
 import About from './components/About';
+import Error from './components/Error';
+import Contact from './components/Contact'
 import {createBrowserRouter,RouterProvider} from 'react-router-dom';
 
 ("use strict");
@@ -36,10 +38,17 @@ const appRouter = createBrowserRouter([
   {
     path:"/",
     element: <AppLayout />,
+    errorElement: <Error />,
   },
   {
     path:"/about",
-    element:<About/>
+    element:<About/>,
+    errorElement: <Error />,
+  },
+  {
+    path:"/contact",
+    element:<Contact/>,
+    errorElement: <Error />,
   }
 ])
 
