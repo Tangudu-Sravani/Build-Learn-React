@@ -4,6 +4,7 @@ import RestaurantCard from './RestaurantCard';
 import { useState , useEffect} from 'react';
 import resList from '../utils/mockData';
 import Shimmer from './Shimmer';
+import {Link} from "react-router-dom";
 
 const Body = () => {
  const [ listOfRestaurants, setListOfRestaurants ] = useState([]);
@@ -37,7 +38,7 @@ const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12
           setSearchText(e.target.value);
         }}/>
         <button className="search-btn" onClick={()=>{
-          let filterSearchres =  filterSearchlist.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()))
+          let filterSearchres =  listOfRestaurants.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()))
           setfilterSearchlist(filterSearchres);
         }}
         >Search</button>
@@ -46,13 +47,19 @@ const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12
           //searchText
           let filteredList = listOfRestaurants.filter((res)=>res.info.avgRating>4.5);
           setfilterSearchlist(filteredList);
-           {console.log("listOfRestaurants", listOfRestaurants)}
+           {console.log("top rated ", listOfRestaurants)}
         }}>Top Rated restaurant</button>
        
       </div>
        <div className="restaurant-container">
+        {console.log("filterSearchlist 2 ",filterSearchlist)  }
         {filterSearchlist.map((restaurant) => (
-          <RestaurantCard  key={restaurant?.info?.id || restaurant?.data?.id} resData={restaurant} />
+          // here Link is helped to append following "/restaurants/" + restaurant?.info?.id in url , which maps the url in app.js to load compoenent
+           <Link key={restaurant?.info?.id} to={"/restaurants/" + restaurant?.info?.id || restaurant?.data?.id} >
+            <RestaurantCard
+              key={restaurant?.info?.id || restaurant?.data?.id}
+              resData={restaurant}
+            /></Link>
         ))}
       </div>
     </div>

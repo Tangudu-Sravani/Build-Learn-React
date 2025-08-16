@@ -5,7 +5,8 @@ import Body from './components/Body.jsx';
 import RestaurantCard from './components/RestaurantCard.jsx';
 import About from './components/About';
 import Error from './components/Error';
-import Contact from './components/Contact'
+import Contact from './components/Contact';
+import RestaurantMenu from './components/RestaurantMenu';
 import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 
 ("use strict");
@@ -36,6 +37,12 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      // this means when the url/path is /restaurants/:resId then render RestaurantMenu component
+      {
+        path: "/restaurants/:resId",
+        //:resId it means dynamic declaration ":" colon creates dynamic
+        element:<RestaurantMenu />
       }
     ],
     errorElement: <Error />,

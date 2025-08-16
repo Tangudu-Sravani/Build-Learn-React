@@ -20,10 +20,12 @@
   "homepage": "https://github.com/Tangudu-Sravani/Build-Learn-React#readme",
   "dependencies": {
     "babel": "^6.23.0",
-    "outlet": "^0.1.5",
+    "outlet": "^0.1.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-router-dom": "^6.11.2"
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^6.11.2",
+    "vite": "^7.1.2"
   },
   "devDependencies": {
     "parcel": "^2.15.4"

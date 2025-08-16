@@ -5,3 +5,45 @@
     display:flex;
     flex-wrap:wrap;
 }
+
+
+.menu-header{
+  background-color:#000;
+  color:white;
+  display:flex;
+  padding: 20px;
+   justify-content: center;
+  align-items: center;
+  gap: 30px;
+  height: 30vh;
+}
+
+.menu-header .menu-header-right .bottom {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 20px;
+}
+.menu-start{
+  margin:50px 110px;
+}
+.menu-start .itemDetails{
+ display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+
+}
+
+.item-description {
+  opacity:90%;
+  color:	#303030;
+}
+.item-img{
+   width: '60px';
+    height: '60px';
+     objectFit: 'cover'; 
+   borderRadius: '8px' ;
+}
