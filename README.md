@@ -84,4 +84,7 @@ Routing
 
     RouterProvider is a compoenent, which is exported by react-router-dom library , providing appRouter configuration to it
 
-   
+Routing of RestaurantMenu
+    we have decalred path through link which appends in url
+    App.js we have declared the path correcponding compoenent rendering
+    RestaurantMenu component taked the path id , through api calls renders the data
