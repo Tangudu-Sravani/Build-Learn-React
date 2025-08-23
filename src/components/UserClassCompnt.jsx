@@ -21,6 +21,20 @@ class UserClassCompnt extends React.Component {
   }
   componentWillUnmount(){
     console.log(" component will unmount ");
+    // when user switchs to some other component/ new page in SPA its not reloading the page it is changing compoenent doing reconcellation ,
+
+    // if want to try wring a setInterval in componentDidMount - and write console.log there , and try to switch pages its still called even we are in different component ,and to fix it add clearInterval() in componentWillUnmount
+
+
+    // if the same case occurs in case of functional component can be used return statement in useEffect to write any operations 
+    /**
+     * useEffect (()=>{
+     * seInterval(()=>{console.log("abc")},1000)
+     * return(){
+     * clearInterval}
+     * },[])
+     */
+
   }
   /**
    * Lifecycle Flow (Class Component)
