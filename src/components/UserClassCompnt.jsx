@@ -3,46 +3,82 @@ class UserClassCompnt extends React.Component {
   // for receiving props need constructer
   constructor(props) {
       super(props);
-      // creation of multiple state variables inside class based component
-      this.state = {
-          count: 0,
-          count2: 12,
-        };
-        console.log(this.props.name," child constructor ");
+        this.state = {
+      userInfo: {},  // initialize as empty object
+    };
   }
-  componentDidMount() {
-    console.log(this.props.name," child component did mount ");
+  async componentDidMount() {
+    const data = await fetch("https://api.github.com/users/Tangudu-Sravani");
+    const json = await data.json();
+    this.setState({
+      userInfo: json,
+    });
+    {console.log(json)}
   }
+  componentDidUpdate() {
+    // when data change in state variable re-rendering occurs and DOM updation happens later componentDidUpdate is been called,
+    console.log(" component did update ");
+  }
+  componentWillUnmount(){
+    console.log(" component will unmount ");
+  }
+  /**
+   * Lifecycle Flow (Class Component)
+
+Mounting (first time):
+
+constructor → render → commit to DOM → componentDidMount
+
+Updating (on state/props change):
+
+render → commit to DOM → componentDidUpdate
+
+Unmounting (removal):
+
+componentWillUnmount
+   */
 
   render() {
-    {
-      console.log(this.props.name," child render ");
-    }
-    const { name, location } = this.props;
-    const { count } = this.state;
+    console.log(" render ")
+
+    const {login,avatar_url} = this.state.userInfo; 
     return (
       <div className="assign-border">
-        <h1>Class component</h1>
-        <h3>Count: {count}</h3>
-        <button
-          onClick={() => {
-            //NEVER UPDATE STATE VARIABLES DIRECTLY ex:-  this.state.count=this.state.count+1;
-            // setState is a function which is used for updation of state varibles given by react
-            // setState contains a object which helps for updating state variables
-            this.setState({
-              count: this.state.count + 1,
-            });
-          }}
-        >
-          increase count
-        </button>
-        <h3>Count2: {this.state.count2}</h3>
-
-        <h3>Name:- {name}</h3>
-        <p>Email Id :- {location}</p>
+       
+        {/* <h3>Name:- {this.state.userInfo.name}</h3> */}
+        <img src={avatar_url}/>
+        <p>Name :- {login}</p>
         <p> Location : - Pune </p>
       </div>
     );
   }
 }
 export default UserClassCompnt;
+
+/**
+ * explaining how it render in web page
+ * first constructor will be called where state is been intialized 
+ * then render hits where we are using state variable - but loads by black inputs from state , because no 
+ * values have been assined to state in constructor, after ComponentDidMount hits where we get data 
+ * here comes updating the state variable data , with the help of  setState , when state variable updates , react triggers the reder once agin , where the state is already is updated so updated things will be appered 
+ * at last ComponentDidUpdate will be called
+ * 
+ * 
+ * 
+ * 
+ * 
+ * ------------MOUNTING----------
+ * Constructor
+ * Render (dummy)
+ *        <HTML Dummy>
+ * Component Did Mount
+ *        <API call>
+ *        <HTML new API dat)
+ *         <this.setState> -> State cariable is updated
+ * 
+ * ----------UPDATE
+ * 
+ * render (API data)
+    *  <HTML new API data)
+    * componentDidUpdate
+ */
