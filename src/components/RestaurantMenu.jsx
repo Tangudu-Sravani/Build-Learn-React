@@ -7,23 +7,21 @@ import { CDN_URL } from '../utils/constants';
 import { MENU_API } from '../utils/constants';
 import { FiClock } from 'react-icons/fi';
 import { AiOutlineStar } from 'react-icons/ai';
+import  useRestaurantMenu  from "../utils/useRestaurantMenu";
+import FilterMenu from "../utils/FilterMenu";
+
+
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
 const {resId} = useParams();
 const [allItems, setAllItems] = useState([]);
 const [displayItems, setDisplayItems] = useState([]);
 
-/**
- * why two  different syntaxs have been written for data 
- * resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card.itemCards 
- * resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card.categories[0]?.itemCards
- * beacuse the data sources is not same structure two types of structures are been present in huge data source
- */
+  const resInfo = useRestaurantMenu(resId)
+
 useEffect(() => {
   if (resInfo) {
     const items =
       resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card.itemCards ||
-      //adding veg+nonVeg to show all items in menu [datasource is not good] 
       [
        ...(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card.categories[0]?.itemCards || []),
        ...(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card.categories[1]?.itemCards || [])
@@ -34,27 +32,18 @@ useEffect(() => {
 }, [resInfo]);
 
 const showVeg = () => {
-  const vegList = allItems?.length
-  ? allItems?.filter(item => item.card.info.isVeg === 1 )
-  : resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.categories[0]?.itemCards || [];
-  setDisplayItems(vegList); // assinging the veg list to setDisplayItems 
+  const vegList = FilterMenu("veg",allItems,resInfo,{setDisplayItems});
 };
 
 const showNonVeg = () => {
-  const nonVegList = allItems?.length
-  ? allItems?.filter(item => item.card.info.isVeg !== 1)
-  :  resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.categories[1]?.itemCards;
+  const nonVegList = FilterMenu("Nonveg",allItems,resInfo,{setDisplayItems});
   setDisplayItems(nonVegList); 
 };
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-  const fetchMenu = async () => {
-    const data = await fetch(MENU_API+resId );
-    const json = await data.json();
-    setResInfo(json.data);
-  };
+  /**
+   * custom hook
+   * - custom hooks are like helper functions
+   */
   if (resInfo === null) return <Shimmer />;
 
   const { name,  cuisines,
