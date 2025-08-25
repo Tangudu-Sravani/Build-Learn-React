@@ -5,6 +5,7 @@ import { useState , useEffect} from 'react';
 import resList from '../utils/mockData';
 import Shimmer from './Shimmer';
 import {Link} from "react-router-dom";
+import useOnlineStatus from '../utils/useOnlineStatus'
 
 const Body = () => {
  const [ listOfRestaurants, setListOfRestaurants ] = useState([]);
@@ -30,7 +31,8 @@ const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12
     );
 }
 
-
+  const onlineStatus = useOnlineStatus();
+  if(onlineStatus == false) return <h1> Your offline, please internet connection</h1>
   return listOfRestaurants.length <= 0 ?  <Shimmer/> : (    <div className="body">
       <div className="search">
          <input type="text" placeholder="dosa" className="search-box" value={searchText}
