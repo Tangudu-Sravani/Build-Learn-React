@@ -19,19 +19,19 @@ export const Header = () => {
 
   
   return (
-    <div className="header">
+    <div className="flex justify-between bg-pink-100 shadow-lg sm: bg-yellow-50">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} width="100px"
+        <img className="w-55" src={LOGO_URL} width="100px"
           height="100px"/>
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>Online status : {onlineStatus ? "🟢" : "🔴"}</li>
-            <li><Link to="/" className="links">Home</Link></li>
-            <li><Link to="/about" className="links">About</Link></li>
-            <li><Link to="/contact" className="links">Contact us</Link></li>
-            <li><Link to="/grocery" className="links">Grocery</Link></li>
-            <li><Link to="/" className="links">Cart</Link></li>
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4">
+          <li className = "px-4">Online status : {onlineStatus ? "🟢" : "🔴"}</li>
+            <li className = "px-4"><Link to="/" className="links">Home</Link></li>
+            <li className = "px-4"><Link to="/about" className="links">About</Link></li>
+            <li className = "px-4"><Link to="/contact" className="links">Contact us</Link></li>
+            <li className = "px-4"><Link to="/grocery" className="links">Grocery</Link></li>
+            <li className = "px-4"><Link to="/" className="links">Cart</Link></li>
             {/* <button className="login" onClick={()=>{btnName="Logout ";
                     console.log(btnName);
                     }
