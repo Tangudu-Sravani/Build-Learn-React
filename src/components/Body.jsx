@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard,{withPromotedLabel} from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
@@ -12,6 +12,9 @@ const Body = () => {
   const [searchText, setSearchText] = useState([]);
 
   const [filterSearchlist, setfilterSearchlist] = useState([]);
+
+    const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
 
   useEffect(() => {
     fetchData();
@@ -88,10 +91,8 @@ const Body = () => {
             key={restaurant?.info?.id}
             to={"/restaurants/" + restaurant?.info?.id || restaurant?.data?.id}
           >
-            <RestaurantCard
-              key={restaurant?.info?.id || restaurant?.data?.id}
-              resData={restaurant}
-            />
+            {restaurant.info?.aggregatedDiscountInfoV3?.header?.includes("OFF") ? <RestaurantCardPromoted resData={restaurant}/> :  <RestaurantCard resData={restaurant} />}
+
           </Link>
         ))}
       </div>
