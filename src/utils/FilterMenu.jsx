@@ -8,7 +8,7 @@ const FilterMenu = (filter, allItems, resInfo) => {
   else if(filter == "Nonveg") {
     
   return allItems?.length
-  ? allItems?.filter(item => item.card.info.isVeg !== 1)
+  ? allItems?.filter(item => item.card.info?.isVeg != 1)
   :  resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.categories[1]?.itemCards;
   }
 }
