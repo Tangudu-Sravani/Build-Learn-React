@@ -40,7 +40,12 @@ const resInfo = useRestaurantMenu(resId);
         <h2 className="font-bold text-lg">{cuisines.join(",")}</h2>
         {/** categories accordian */}
         {categories.map((category)=>
-        <RestaurantCategory key={category.card.card.title} data = {category?.card?.card}/>)}
+        <RestaurantCategory key={category.card.card.title} data = {category?.card?.card} showItems = {true}/>) 
+        // wanted to do such a thing 
+              // - if one accordian is expanded rest all should collaps
+              // so RestaurantMenu showItems should be controlled by this such that all other accordians except the required one would be collaps
+              // so by passing shoeItem value in props we can handle it 
+        }
     </div>
   );
 };
