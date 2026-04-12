@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+import React,{ useEffect, useState }  from "react";
 import Shimmer from "./Shimmer";
 import {useParams} from "react-router-dom";
 import  useRestaurantMenu  from "../utils/useRestaurantMenu";
 import RestaurantCategory from './RestaurantCategory';
-import {useState} from 'react';
 
 
 const RestaurantMenu = () => {
 const {resId} = useParams();
+  const dummy = "Dummy Data";
 const resInfo = useRestaurantMenu(resId);
 const [showIndex,setShowIndex] =useState(2);
 
@@ -31,30 +31,30 @@ const [showIndex,setShowIndex] =useState(2);
 
   return (
     <div className="text-center">
-    
-        <h1 className="font-bold my-7 text-2xl">{name}</h1>
-        <h2 className="font-bold text-lg">{cuisines.join(",")}</h2>
-        {
-          /**
+      <h1 className="font-bold my-7 text-2xl">{name}</h1>
+      <h2 className="font-bold text-lg">{cuisines.join(",")}</h2>
+      {/**
         // wanted to do such a thing 
               // - if one accordian is expanded rest all should collaps
                   - have done hardcorded for some particular index to exapnd rest all should collaps 
                   // but if i some how get the info of click which user is selecting , the info can be fetch in RestaurantCategory 
                   // some how i can access the child value then i can controll the accordian by parent 
                   // or by modifiying the state variable of parent by  child [if it is done the we acheived the goal] [DONE by LEVELINg UP Component]
-           */
-        }
-        {/** Controlled compoenent */}
-          {/**seting the showIndex to child compoenent ResCateg
+           */}
+      {/** Controlled compoenent */}
+      {/**seting the showIndex to child compoenent ResCateg
           and receiving it in child compoenent so by it as soon as uer clicks on accordian passes the index value to the parent compoenent
           */}
-        {categories.map((category,index)=>
-        <RestaurantCategory key={category.card.card.title} data = {category?.card?.card} 
-        showItems = {index == showIndex ? true : false }
-        setShowIndex= {() => setShowIndex(index)}
-        />) 
-        
-        }
+      {categories.map((category, index) => (
+        <RestaurantCategory
+          key={category.card.card.title}
+          data={category?.card?.card}
+          showItems={index == showIndex ? true : false}
+          // setShowIndex= {() => setShowIndex(index)}
+          setShowIndex={() => setShowIndex(index === showIndex ? null : index)}
+          dummy={dummy}
+        />
+      ))}
     </div>
   );
 };

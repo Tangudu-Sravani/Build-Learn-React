@@ -8,7 +8,6 @@ import Error from './components/Error';
 import Contact from './components/Contact';
 import RestaurantMenu from './components/RestaurantMenu';
 import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
-import Grocery from './components/Grocery';
 import { Suspense,lazy } from 'react';
 
 ("use strict");
