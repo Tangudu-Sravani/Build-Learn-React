@@ -1,44 +1,65 @@
-import { React, Component } from "react";
-import UserCard from "./UserCard";
+import React, { Component } from "react";import UserCard from "./UserCard";
 import UserClassCompnt from "./UserClassCompnt";
+import UserContext from '../utils/UserContext';
+
+
 class About extends Component {
   constructor(props) {
     super(props);
-    console.log("parent constructor");
+    // console.log('Parent Constructor');
   }
+
   componentDidMount() {
-    console.log("parent component did mount ");
-  }
+    // console.log('Parent Component Did Mount');
+  };
+
   render() {
+    // console.log('Parent Render');
+
     return (
       <div className="about-page">
-        {console.log("parent render")}
-        <h1>About</h1>
-        <h2>React </h2>
-        {/* <UserCard name={" function given to functional component "}/> */}
-        <UserClassCompnt
-          // name={" child1 - 1st instace "}
-          // location={"Gunupur"}
-        />        
+        <h1>About Class Component</h1>
+        <div>
+          LoggedInUser
+          <UserContext.Consumer>
+            {({ loggedInUser }) => <h1>{loggedInUser}</h1>}
+          </UserContext.Consumer>
+        </div>
+        <h2>This is About Page</h2>
+        {/* <import UserClassCompnt from "./UserClassCo mpnt";
+ name={'First'} location={'Badvel class'} /> */}
       </div>
-      /**
-       * Parent constructor
-       * -Parent Render
-       * 
-       *  -First Constructor
-       *  -First Render
-       * 
-       *  -second Constructor
-       *  -Second Render
-       * 
-       * <DOM UPDATED - IN SINGLEBATCH>
-       * - First ComponentDidMount
-       *  -Second ComponentDidMount
-       * 
-       * Parent ComponentDid Mount
-       */
     );
   }
 }
+
+// * RENDER CYCLE OF CLASS BASED COMPONENTS WHEN THE CLASS HAS TWO CHLIDREN
+
+/* 
+*  - Parent Constructor()              -- Render Phase
+*  - Parent Render()
+
+*    - First Child Constructor()
+*    - First Child Render()
+*                                      -- Render Phase
+*    - Second Child Constructor()
+*    - Second Child Render()
+
+*     <DOM UPDATED - IN SINGLE BATCH> -> Optimizes the Performance of App  -- Commit Phase
+*    - First Child ComponentDidMount()
+*    - Second Child ComponentDidMount()
+
+*  - Parent ComponentDidMount()=
+*/
+
+// const About = () => {
+//   return (
+//     <div>
+//       <h1>About Us</h1>
+//       <h2>This is About Page</h2>
+//       <UserClass name={'Vasu (class)'} location={'Badvel class'} />
+//     </div>
+//   );
+// };
 
 export default About;

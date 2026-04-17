@@ -6,6 +6,8 @@ import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import {useContext} from 'react';
+import UserContext from '../utils/UserContext';
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -39,6 +41,9 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
   if (onlineStatus == false)
     return <h1> Your offline, please internet connection</h1>;
+
+  const { loggedInUser,setUserInfo} = useContext(UserContext);
+
   return listOfRestaurants.length <= 0 ? (
     <Shimmer />
   ) : (
@@ -81,6 +86,14 @@ const Body = () => {
           >
             Top Rated restaurant
           </button>
+            <label htmlFor="name">User Name: </label>
+          <input
+            id="name"
+            className="border border-black p-2"
+            value={loggedInUser}
+            onChange={(e) => setUserInfo(e.target.value)}
+          />
+          
         </div>
       </div>
       <div className="flex flex-wrap justify-start w-[95%]">

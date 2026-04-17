@@ -1,4 +1,5 @@
 import React from "react";
+import{useState,useEffect} from 'react';
 import ReactDOM from "react-dom/client";
 import {Header} from './components/Header.jsx';
 import Body from './components/Body.jsx';
@@ -9,15 +10,33 @@ import Contact from './components/Contact';
 import RestaurantMenu from './components/RestaurantMenu';
 import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 import { Suspense,lazy } from 'react';
+import UserContext from "./utils/UserContext";
 
 ("use strict");
 
 const AppLayout = () => {
+
+    const [userInfo,setUserInfo] = useState();
+
+
+    useEffect(()=>{
+      // Make an API call and send the username and password
+      const data = {
+        name:"Sravani"
+      };
+      setUserInfo(data.name);
+    },[]);
+
+
   return (
+    <UserContext.Provider value={{loggedInUser:userInfo,setUserInfo}}>
     <div className="app">
+      {/* <UserContext.Provider value={{loggedInUser:"Sravani Tangudu", setUserInfo}}> */}
       <Header />
+    {/* </UserContext.Provider> */}
       <Outlet />
     </div>
+    </UserContext.Provider>
   );
 };
 const reactRoot = ReactDOM.createRoot(document.getElementById("root"));
