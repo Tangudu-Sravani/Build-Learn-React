@@ -6,19 +6,19 @@ import {Link} from "react-router-dom";
 import useOnlineStatus from '../utils/useOnlineStatus';
 import Grocery from './Grocery';
 import UserContext from '../utils/UserContext';
+import { useSelector } from "react-redux";
+import Cart from './Cart';
 
 export const Header = () => {
   // let btnName = "Login";
     const [btnNameReact, setBtnNameReact] = useState("Login");
-
-    //if no dependency array => useEffect is called on every render
-    //if dependecy array is empty = [] => useEffect is called on intial render(just once)
-    //If dependency array is [btnNameReact] => called btnNameReact is updated
-
     useEffect(()=>{console.log("useEffect on change of btnNameReact ")},[btnNameReact]);
     const onlineStatus = useOnlineStatus();
   const {loggedInUser} = useContext(UserContext);
   // console.log(loggedInUser);
+
+  // useSelector gives the access to the store 
+  const cartItems = useSelector((store)=> store.cart.items);
   
   return (
     <div className="flex justify-between bg-pink-100 shadow-lg sm: bg-yellow-50">
@@ -33,7 +33,7 @@ export const Header = () => {
             <li className = "px-4"><Link to="/about" className="links">About</Link></li>
             <li className = "px-4"><Link to="/contact" className="links">Contact us</Link></li>
             <li className = "px-4"><Link to="/grocery" className="links">Grocery</Link></li>
-            <li className = "px-4"><Link to="/" className="links">Cart</Link></li>
+            <li className = "px-4 font-bold text-xl"><Link to="/cart" className="links">Cart ({cartItems.length} items)</Link></li>
             {/* <button className="login" onClick={()=>{btnName="Logout ";
                     console.log(btnName);
                     }

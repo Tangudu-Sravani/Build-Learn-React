@@ -88,3 +88,16 @@ Routing of RestaurantMenu
     we have decalred path through link which appends in url
     App.js we have declared the path correcponding compoenent rendering
     RestaurantMenu component taked the path id , through api calls renders the data
+
+
+
+    # Redux Toolkit
+    - Install @reduxjs/toolkit and react-redux
+    - Build our store
+    - Connect our store to our app
+    - Slice (cartSlice)
+    - disptach(action)
+    - Selector [read data using selector]
+
+
+    
