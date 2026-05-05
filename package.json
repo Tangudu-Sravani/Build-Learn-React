@@ -19,7 +19,13 @@
   },
   "homepage": "https://github.com/Tangudu-Sravani/Build-Learn-React#readme",
   "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.3",
+    "@testing-library/react": "^16.3.2",
     "babel": "^6.23.0",
+    "babel-jest": "^30.3.0",
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0",
     "outlet": "^0.1.5",
     "parcel": "^2.15.4",
     "postcss": "^8.5.6",
