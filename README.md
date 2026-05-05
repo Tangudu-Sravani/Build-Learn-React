@@ -1,4 +1,4 @@
--------------------------------------------------
+C-------------------------------------------------
 Ways to use react
 1. CDN Links
 2. using import of libraries of react
@@ -105,7 +105,6 @@ Routing of RestaurantMenu
  - Integration Testing
  - End to End Testing - e2e testing 
 
-
  #setting up testing in our app
  - Install React testing library =>  npm install -D @testing-library/react
  - install Jest => npm install --save-dev jest
@@ -114,7 +113,9 @@ Routing of RestaurantMenu
  - configure Parcel Config file to disable babel transpilation => npm install -D --save-dev babel-jest @babel/core @babel/preset-env
   - npx create-jest --init
   -Install jsdom library  => npm install --save-dev jest-environment-jsdom 
-  - npm install -D babel/preset-react => to make JSX work in test cases
-  - Install @babel/preset-react inside Babel Config
-  - Install npm -D @testing-library/jest-dom
+  - npm install -D @babel/preset-react => to make JSX work in test cases <Contact/>
+  - add  ["@babel/preset-react", { runtime: "automatic"}] inside Babel Config => helps JSX to html code convertion
+  - Install npm i -D @testing-library/jest-dom  -gives you extra matchers (assertions) for DOM testing. ex:- toBeInTheDocument 
   
+
+  To run test - npm test - in package.json under script have to mention about the tes:Jest
